@@ -1,0 +1,23 @@
+{
+  "name": "eigerx-practical-exercises",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ps0m/EigerX-Practical-Exercises.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ps0m/EigerX-Practical-Exercises/issues"
+  },
+  "homepage": "https://github.com/ps0m/EigerX-Practical-Exercises#readme",
+  "devDependencies": {
+    "jest": "^29.3.1"
+  }
+}
