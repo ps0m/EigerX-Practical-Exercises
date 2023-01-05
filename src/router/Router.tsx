@@ -15,9 +15,11 @@ const Router = () => (
       <Route
         path={TODO_PAGE}
         element={
-        <RequireAuth>
-          <ToDoPage />
-        </RequireAuth>} />
+          <RequireAuth>
+            <ToDoPage />
+          </RequireAuth>
+        }
+      />
       <Route path={ANYTHING_PATH} element={<NotFoundPage />} />
     </Route>
   </Routes>

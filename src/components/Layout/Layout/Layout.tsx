@@ -9,12 +9,13 @@ const Layout = () => (
     <Suspense fallback={<CircularProgress color="success" />}>
       <Header />
       <Container
-       component='main'
-       sx={{
+        component="main"
+        sx={{
           height: '100%',
-          flex: '1 1 auto'
-       }}>
-          <Outlet />
+          flex: '1 1 auto',
+        }}
+      >
+        <Outlet />
       </Container>
       <Footer />
     </Suspense>
