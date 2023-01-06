@@ -1,5 +1,3 @@
-// import LinkedInIcon from '@mui/icons-material/LinkedIn';
-// import ReceiptLongIcon from '@mui/icons-material/ReceiptLong';
 import { Link, Stack } from '@mui/material';
 import { FooterLinkInterface, FOOTER_CONTENT as content } from './constants';
 
