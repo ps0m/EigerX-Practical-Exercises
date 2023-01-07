@@ -1,30 +1,52 @@
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import { Button, Stack } from '@mui/material';
-import { ChangeEvent, KeyboardEvent, MouseEvent, useCallback, useState } from 'react';
+import { ChangeEvent, KeyboardEvent, MouseEvent, useCallback, useContext, useState } from 'react';
 import CustomInput from '../components/CustomInput/CustomInput';
 import ToDoItem from '../components/CustomInput/ToDoItem/ToDoItem';
+import { UserContext } from '../context';
+import { readFromLocalStor, writeToLocalStore } from '../helpers/helpers';
 import { ToDoType } from '../types/types';
 
 const ToDoPage = () => {
+  const { user } = useContext(UserContext);
   const [title, setTitle] = useState<string>('');
-  const [listToDo, setListToDo] = useState<ToDoType[]>([]);
+  const [listToDo, setListToDo] = useState<ToDoType[]>(() => (user ? readFromLocalStor(user) : []));
 
-  const changeToDo = useCallback((newToDo: ToDoType) => {
-    setListToDo((prev) =>
-      [...prev].map((toDo) => {
-        return toDo.id === newToDo.id ? newToDo : toDo;
-      })
-    );
-  }, []);
+  const changeToDo = useCallback(
+    (newToDo: ToDoType) => {
+      setListToDo((prev) => {
+        const newList = prev.map((toDo) => {
+          return toDo.id === newToDo.id ? newToDo : toDo;
+        });
+        writeToLocalStore({ user, data: newList });
+        return newList;
+      });
+    },
+    [user]
+  );
 
-  const createToDo = useCallback((title: string) => {
-    const toDo = { title, id: Date.now(), open: true };
-    setListToDo((prev) => prev.concat(toDo));
-  }, []);
+  const createToDo = useCallback(
+    (title: string) => {
+      const toDo = { title, id: Date.now(), open: true };
+      setListToDo((prev) => {
+        const newList = prev.concat(toDo);
+        writeToLocalStore({ user, data: newList });
+        return newList;
+      });
+    },
+    [user]
+  );
 
-  const deleteToDo = useCallback((id: number) => {
-    setListToDo((prev) => prev.filter((toDo) => toDo.id !== id));
-  }, []);
+  const deleteToDo = useCallback(
+    (id: number) => {
+      setListToDo((prev) => {
+        const newList = prev.filter((toDo) => toDo.id !== id);
+        writeToLocalStore({ user, data: newList });
+        return newList;
+      });
+    },
+    [user]
+  );
 
   const handlerClickCreate = useCallback(
     (event: MouseEvent<HTMLButtonElement>) => {

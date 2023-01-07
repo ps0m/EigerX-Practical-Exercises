@@ -1,4 +1,4 @@
-import { TextField, Typography } from '@mui/material';
+import { BaseTextFieldProps, TextField, Typography } from '@mui/material';
 import { ChangeEvent, FC, KeyboardEvent, memo } from 'react';
 
 interface PropsInterface {
@@ -8,8 +8,8 @@ interface PropsInterface {
   handlerKeyPress?: (event: KeyboardEvent<HTMLInputElement>) => void;
 }
 
-const CustomInput: FC<PropsInterface> = memo(
-  ({ value, changeValue, placeholder, handlerKeyPress }) => {
+const CustomInput: FC<PropsInterface & BaseTextFieldProps> = memo(
+  ({ value, changeValue, placeholder, handlerKeyPress, ...attr }) => {
     return (
       <TextField
         label={<Typography variant="h5">{placeholder}</Typography>}
@@ -22,6 +22,7 @@ const CustomInput: FC<PropsInterface> = memo(
         inputProps={{
           style: { fontSize: 16 },
         }}
+        {...attr}
       />
     );
   }
