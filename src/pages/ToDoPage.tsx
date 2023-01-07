@@ -1,10 +1,12 @@
-import { Stack } from '@mui/material';
-import { useCallback, useState } from 'react';
+import AddCircleIcon from '@mui/icons-material/AddCircle';
+import { Button, Stack } from '@mui/material';
+import { ChangeEvent, KeyboardEvent, MouseEvent, useCallback, useState } from 'react';
 import CustomInput from '../components/CustomInput/CustomInput';
 import ToDoItem from '../components/CustomInput/ToDoItem/ToDoItem';
 import { ToDoType } from '../types/types';
 
 const ToDoPage = () => {
+  const [title, setTitle] = useState<string>('');
   const [listToDo, setListToDo] = useState<ToDoType[]>([]);
 
   const changeToDo = useCallback((newToDo: ToDoType) => {
@@ -24,9 +26,47 @@ const ToDoPage = () => {
     setListToDo((prev) => prev.filter((toDo) => toDo.id !== id));
   }, []);
 
+  const handlerClickCreate = useCallback(
+    (event: MouseEvent<HTMLButtonElement>) => {
+      event.preventDefault();
+      createToDo(title);
+      setTitle('');
+    },
+    [createToDo, title]
+  );
+
+  const handlerKeyPress = useCallback(
+    (event: KeyboardEvent<HTMLInputElement>) => {
+      if (event.key === 'Enter') {
+        createToDo(title);
+        setTitle('');
+      }
+    },
+    [createToDo, title]
+  );
+
+  const handlerChangeInput = useCallback((event: ChangeEvent<HTMLInputElement>) => {
+    setTitle(event.target.value);
+  }, []);
+
   return (
     <Stack component="section" justifyContent="flex-start" alignItems="center">
-      <CustomInput createToDo={createToDo} />
+      <Stack direction="row" justifyContent="center" m={3} minWidth={300} width="50%">
+        <CustomInput
+          value={title}
+          changeValue={handlerChangeInput}
+          placeholder="Enter ToDo"
+          handlerKeyPress={handlerKeyPress}
+        />
+        <Button
+          variant="contained"
+          color="secondary"
+          disabled={!title}
+          onClick={handlerClickCreate}
+        >
+          <AddCircleIcon fontSize="large" />
+        </Button>
+      </Stack>
       <Stack
         direction="row"
         justifyContent={{ xs: 'space-evenly' }}
