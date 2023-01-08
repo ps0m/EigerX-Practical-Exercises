@@ -2,7 +2,7 @@ import AddCircleIcon from '@mui/icons-material/AddCircle';
 import { Button, Stack } from '@mui/material';
 import { ChangeEvent, KeyboardEvent, MouseEvent, useCallback, useContext, useState } from 'react';
 import CustomInput from '../components/CustomInput/CustomInput';
-import ToDoItem from '../components/CustomInput/ToDoItem/ToDoItem';
+import ToDoItem from '../components/ToDoItem/ToDoItem';
 import { UserContext } from '../context';
 import { readFromLocalStor, writeToLocalStore } from '../helpers/helpers';
 import { ToDoType } from '../types/types';

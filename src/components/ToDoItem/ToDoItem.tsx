@@ -5,7 +5,7 @@ import {
 } from '@mui/icons-material';
 import { Checkbox, FormControlLabel, IconButton, Paper, Stack, TextField } from '@mui/material';
 import { ChangeEvent, FC, FocusEvent, KeyboardEvent, memo, MouseEvent } from 'react';
-import { ToDoType } from '../../../types/types';
+import { ToDoType } from '../../types/types';
 
 interface PropsInterface {
   id: number;
@@ -42,7 +42,7 @@ const ToDoItem: FC<PropsInterface> = memo(({ id, title, open, changeToDo, delete
   };
 
   return (
-    <Stack direction="row" width="40%" minWidth={300}>
+    <Stack direction="row" width={{ xs: '98%', md: '48%' }} minWidth={300}>
       <Paper
         sx={{
           width: '100%',
