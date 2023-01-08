@@ -1,4 +1,4 @@
-import { Button, Paper } from '@mui/material';
+import { Button, Paper, Typography } from '@mui/material';
 import { ChangeEvent, Dispatch, FC, FormEvent, SetStateAction, useCallback, useState } from 'react';
 import CustomInput from '../CustomInput/CustomInput';
 
@@ -37,12 +37,16 @@ const Form: FC<PropsInterface> = ({ setUser }) => {
 
   return (
     <Paper component="form" sx={styleForPaper} elevation={5} onSubmit={handlerSubmit}>
+      <Typography variant="h3" component="p" color="s">
+        LOGIN
+      </Typography>
       <CustomInput value={name} changeValue={handlerChangeName} placeholder="Name" />
       <CustomInput
         type="password"
         value={password}
         changeValue={handlerChangePassword}
         placeholder="Password"
+        autoComplete="on"
       />
       <Button
         type="submit"

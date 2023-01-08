@@ -1,15 +1,18 @@
 import FaceIcon from '@mui/icons-material/Face';
-import { Avatar, Stack, Typography } from '@mui/material';
-import { FC } from 'react';
+import { Avatar, Button, Stack, Typography } from '@mui/material';
+import { MouseEvent, useContext } from 'react';
+import { UserContext } from '../../context';
 
-interface PropsInterface {
-  name: string;
-}
+const Cabinet = () => {
+  const { user, setUser } = useContext(UserContext);
 
-const Cabinet: FC<PropsInterface> = ({ name }) => {
+  const handlerLogout = (event: MouseEvent<HTMLButtonElement>) => {
+    setUser(null);
+  };
+
   return (
     <Stack maxWidth={320} alignItems="center" spacing={5}>
-      <Typography variant="h2" component="p" color="secondary">
+      <Typography variant="h2" component="p">
         Hello!
       </Typography>
       <Avatar
@@ -18,9 +21,14 @@ const Cabinet: FC<PropsInterface> = ({ name }) => {
       >
         <FaceIcon sx={{ width: 250, height: 250 }} color="secondary" />
       </Avatar>
-      <Typography variant="h2" component="p" color="secondary">
-        {name}
+      <Typography variant="h2" component="p">
+        {user}
       </Typography>
+      <Button variant="contained" color="error" size="large" onClick={handlerLogout}>
+        <Typography variant="h3" component="p">
+          LogOUT
+        </Typography>
+      </Button>
     </Stack>
   );
 };

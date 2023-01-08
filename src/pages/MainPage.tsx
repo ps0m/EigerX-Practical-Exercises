@@ -8,7 +8,7 @@ const MainPage = () => {
   const { user, setUser } = useContext(UserContext);
   return (
     <Stack component="section" justifyContent="center" alignItems="center" height="100%">
-      {user ? <Cabinet name={user} /> : <Form setUser={setUser} />}
+      {user ? <Cabinet /> : <Form setUser={setUser} />}
     </Stack>
   );
 };
