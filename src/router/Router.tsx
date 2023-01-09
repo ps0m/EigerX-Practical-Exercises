@@ -1,12 +1,12 @@
 import { lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import RequireAuth from '../components/RequireAuth/RequireAuth';
-import NotFoundPage from '../pages/NotFoundPage';
 
 import { ANYTHING_PATH, MAIN_PAGE, TODO_PAGE } from './constants';
 const Layout = lazy(() => import('../components/Layout/Layout/Layout'));
-const MainPage = lazy(() => import('../pages/MainPage'));
-const ToDoPage = lazy(() => import('../pages/ToDoPage'));
+const MainPage = lazy(() => import('../pages/MainPage/MainPage'));
+const ToDoPage = lazy(() => import('../pages/ToDoPage/ToDoPage'));
+const NotFoundPage = lazy(() => import('../pages/NotFoundPage/NotFoundPage'));
 
 const Router = () => (
   <Routes>

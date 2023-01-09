@@ -1,8 +1,8 @@
 import { Stack } from '@mui/material';
 import { useContext } from 'react';
-import Cabinet from '../components/Cabinet/Cabinet';
-import Form from '../components/Form/Form';
-import { UserContext } from '../context';
+import Cabinet from '../../components/Cabinet/Cabinet';
+import Form from '../../components/Form/Form';
+import { UserContext } from '../../context';
 
 const MainPage = () => {
   const { user, setUser } = useContext(UserContext);

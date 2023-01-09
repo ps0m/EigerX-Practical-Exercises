@@ -1,6 +1,7 @@
 import { Button, Paper, Typography } from '@mui/material';
 import { ChangeEvent, Dispatch, FC, FormEvent, SetStateAction, useCallback, useState } from 'react';
 import CustomInput from '../CustomInput/CustomInput';
+import { content } from './constants';
 
 const styleForPaper = {
   display: 'flex',
@@ -38,14 +39,18 @@ const Form: FC<PropsInterface> = ({ setUser }) => {
   return (
     <Paper component="form" sx={styleForPaper} elevation={5} onSubmit={handlerSubmit}>
       <Typography variant="h3" component="p" color="s">
-        LOGIN
+        {content.title}
       </Typography>
-      <CustomInput value={name} changeValue={handlerChangeName} placeholder="Name" />
+      <CustomInput
+        value={name}
+        changeValue={handlerChangeName}
+        placeholder={content.placeholderName}
+      />
       <CustomInput
         type="password"
         value={password}
         changeValue={handlerChangePassword}
-        placeholder="Password"
+        placeholder={content.placeholderPassword}
         autoComplete="on"
       />
       <Button
@@ -55,7 +60,7 @@ const Form: FC<PropsInterface> = ({ setUser }) => {
         color="success"
         size="large"
       >
-        LogIn
+        {content.buttonText}
       </Button>
     </Paper>
   );
