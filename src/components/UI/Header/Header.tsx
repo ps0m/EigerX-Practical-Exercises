@@ -8,7 +8,9 @@ const Header = () => {
       <Stack component="ul" direction="row" justifyContent="center" spacing={5} m={2}>
         {content.map((element: HeaderLinkInterface) => (
           <Typography key={element.title} variant="h4" component="li">
-            <NavLink to={element.link}>{element.title}</NavLink>
+            <NavLink to={element.link} style={{ color: 'inherit', textDecoration: 'none' }}>
+              {element.title}
+            </NavLink>
           </Typography>
         ))}
       </Stack>

@@ -11,7 +11,7 @@ const Cabinet = () => {
   };
 
   return (
-    <Stack maxWidth={320} alignItems="center" spacing={5}>
+    <Stack maxWidth={320} alignItems="center" py={5} spacing={5}>
       <Typography variant="h2" component="p">
         Hello!
       </Typography>
