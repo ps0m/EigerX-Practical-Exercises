@@ -13,17 +13,17 @@ export interface FooterLinkInterface {
 
 export const FOOTER_CONTENT: FooterLinkInterface[] = [
   {
-    title: 'github',
+    title: 'Github',
     link: 'https://github.com/ps0m',
     icon: GitHubIcon,
   },
   {
-    title: 'linkedin',
+    title: 'Linkedin',
     link: 'https://www.linkedin.com/in/pobudey-sergey',
     icon: LinkedInIcon,
   },
   {
-    title: 'cv',
+    title: 'CV',
     link: ' https://drive.google.com/file/d/1mKSfviDMkoqzjWW39z40Lp5R7_nhV5Iu/view?usp=sharing',
     icon: ReceiptLongIcon,
   },

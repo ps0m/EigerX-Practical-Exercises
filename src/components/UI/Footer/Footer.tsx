@@ -1,4 +1,4 @@
-import { Link, Stack } from '@mui/material';
+import { Link, Stack, Tooltip, Typography } from '@mui/material';
 import { FooterLinkInterface, FOOTER_CONTENT as content } from './constants';
 
 const Footer = () => {
@@ -12,9 +12,19 @@ const Footer = () => {
       m={3}
     >
       {content.map((element: FooterLinkInterface) => (
-        <Link href={element.link} key={element.title} target="_blank">
-          <element.icon fontSize="large" color="secondary" />
-        </Link>
+        <Tooltip
+          key={element.title}
+          title={
+            <Typography variant="h4" component="p">
+              {element.title}
+            </Typography>
+          }
+          placement="top"
+        >
+          <Link href={element.link} target="_blank">
+            <element.icon color="secondary" sx={{ width: '30px', height: '30px' }} />
+          </Link>
+        </Tooltip>
       ))}
     </Stack>
   );
